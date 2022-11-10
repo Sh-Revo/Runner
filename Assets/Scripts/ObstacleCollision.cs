@@ -8,7 +8,7 @@ public class ObstacleCollision : MonoBehaviour
     {
         if (collision.transform.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(gameObject);            
         }
     }
 }
