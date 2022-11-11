@@ -805,7 +805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cf5c50d1f03f647ae286efdd914658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSpeed: 10
   _cube: {fileID: 3300370805105351851, guid: 61d1d3652214ef8439e999a88cabf451, type: 3}
   rigidbody: {fileID: 1240260485}
 --- !u!54 &1240260485
@@ -1529,7 +1528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225aa01679356b84a8a713a3c328c251, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partToRotate: {fileID: 1690212516}
+  _partToRotate: {fileID: 1690212516}
+  _characterRigidbody: {fileID: 1240260485}
 --- !u!114 &1935071106
 MonoBehaviour:
   m_ObjectHideFlags: 0

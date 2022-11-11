@@ -9,6 +9,7 @@ public class ScoreManager : MonoBehaviour
     private static int _startScoreCount = 0;
     private static int _scoreCount;
     private static int _multiplier = 1;
+    private static int _speedBonus = 1;
     private bool _addScore = false;
     private float _scoreDelay = 0.5f;
 
@@ -36,7 +37,7 @@ public class ScoreManager : MonoBehaviour
 
     IEnumerator AddingScore()
     {
-        ScoreCount += Multiplier;
+        ScoreCount += Multiplier * SpeedBonus;
         _scoreDisplay.GetComponent<Text>().text = " " + _scoreCount;
         yield return new WaitForSeconds(_scoreDelay);
         _addScore = false;
@@ -52,5 +53,11 @@ public class ScoreManager : MonoBehaviour
     {
         get { return _multiplier; }
         set { _multiplier = value; }
+    }
+
+    public static int SpeedBonus
+    {
+        get { return _speedBonus; }
+        set { _speedBonus = value; }
     }
 }

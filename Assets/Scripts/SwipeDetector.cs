@@ -91,8 +91,8 @@ public class SwipeDetector : MonoBehaviour
 
     public enum SwipeDirection
     {
-        Up,
         Down,
+        Up,
         Left,
         Right
     }

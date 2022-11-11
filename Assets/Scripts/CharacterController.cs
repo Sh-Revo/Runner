@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    [SerializeField] private float _startSpeed;
+    private static int _startSpeed = 10;
+    //[SerializeField] private int _startSpeed2;
     [SerializeField] private GameObject _cube;
     [SerializeField] private Rigidbody rigidbody;
 
@@ -48,5 +49,11 @@ public class CharacterController : MonoBehaviour
                 ScoreManager.Multiplier = 1;
             }
         }
+    }
+
+    public static int StartSpeed
+    {
+        get { return _startSpeed; }
+        set { _startSpeed = value; }
     }
 }
