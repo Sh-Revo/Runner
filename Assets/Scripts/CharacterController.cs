@@ -47,7 +47,6 @@ public class CharacterController : MonoBehaviour
                 ScoreManager.ScoreCount = -5;
                 ScoreManager.Multiplier = 1;
             }
-
         }
     }
 }

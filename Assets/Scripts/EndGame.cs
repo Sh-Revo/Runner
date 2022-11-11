@@ -5,15 +5,6 @@ using UnityEngine;
 public class EndGame : MonoBehaviour
 {
     private static bool _isEnd = false;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider collider)
     {
