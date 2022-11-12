@@ -24,6 +24,9 @@ public class SwipeManager : MonoBehaviour
         {
             if (_direction == SwipeDirection.Right)
             {
+                //Quaternion target = Quaternion.Euler(0, 90f, 0);
+                //_partToRotate.transform.rotation = Quaternion.RotateTowards(_partToRotate.transform.rotation, target, 100f * Time.deltaTime);
+                //_partToRotate.transform.rotation = Quaternion.Lerp(_partToRotate.transform.rotation, target, 10f * Time.deltaTime);
                 _partToRotate.transform.rotation = Quaternion.Euler(0, _partToRotate.transform.rotation.eulerAngles.y + 90f, 0);
                 _direction = 0;
             }
