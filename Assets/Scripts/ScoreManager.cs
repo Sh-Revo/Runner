@@ -38,7 +38,7 @@ public class ScoreManager : MonoBehaviour
     IEnumerator AddingScore()
     {
         ScoreCount += Multiplier * SpeedBonus;
-        _scoreDisplay.GetComponent<Text>().text = " " + _scoreCount;
+        _scoreDisplay.GetComponent<Text>().text = " " + _scoreCount + "    x" + Multiplier * SpeedBonus;
         yield return new WaitForSeconds(_scoreDelay);
         _addScore = false;
     }

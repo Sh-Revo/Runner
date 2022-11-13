@@ -7,10 +7,13 @@ public class SwipeManager : MonoBehaviour
 {
     [SerializeField] private GameObject _partToRotate;
     [SerializeField] private Rigidbody _characterRigidbody;
+    [SerializeField] private ParticleSystem _speedBoostEffect;
     private SwipeDirection _direction;
+
     private void Awake()
     {
         SwipeDetector.OnSwipe += SwipeDetector_OnSwipe;
+        _speedBoostEffect.Stop();
     }
 
     private void SwipeDetector_OnSwipe(SwipeData data)
@@ -24,9 +27,6 @@ public class SwipeManager : MonoBehaviour
         {
             if (_direction == SwipeDirection.Right)
             {
-                //Quaternion target = Quaternion.Euler(0, 90f, 0);
-                //_partToRotate.transform.rotation = Quaternion.RotateTowards(_partToRotate.transform.rotation, target, 100f * Time.deltaTime);
-                //_partToRotate.transform.rotation = Quaternion.Lerp(_partToRotate.transform.rotation, target, 10f * Time.deltaTime);
                 _partToRotate.transform.rotation = Quaternion.Euler(0, _partToRotate.transform.rotation.eulerAngles.y + 90f, 0);
                 _direction = 0;
             }
@@ -40,6 +40,7 @@ public class SwipeManager : MonoBehaviour
                 if (_characterRigidbody.velocity.magnitude < CharacterController.StartSpeed + 5f)
                 {
                     _characterRigidbody.AddForce((new Vector3(0, 0, 1)) * (CharacterController.StartSpeed + 10) * Time.deltaTime, ForceMode.Impulse);
+                    _speedBoostEffect.Play();
                     if (_characterRigidbody.velocity.magnitude > CharacterController.StartSpeed + 5f)
                     {
                         _direction = 0;
@@ -52,6 +53,7 @@ public class SwipeManager : MonoBehaviour
                 if (_characterRigidbody.velocity.magnitude > CharacterController.StartSpeed)
                 {
                     _characterRigidbody.AddForce((new Vector3(0, 0, -1)) * (CharacterController.StartSpeed + 35) * Time.deltaTime, ForceMode.Impulse);
+                    _speedBoostEffect.Stop();
                     if (_characterRigidbody.velocity.magnitude < CharacterController.StartSpeed)
                     {
                         _direction = 0;

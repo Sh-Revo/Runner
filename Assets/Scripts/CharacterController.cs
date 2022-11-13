@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private static int _startSpeed = 10;
-    //[SerializeField] private int _startSpeed2;
     [SerializeField] private GameObject _cube;
     [SerializeField] private Rigidbody rigidbody;
 
