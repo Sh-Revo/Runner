@@ -44,7 +44,7 @@ public class CharacterController : MonoBehaviour
             ScoreManager.Multiplier++;
             if (rigidbody.velocity.magnitude < 2)
             {
-                ScoreManager.ScoreCount = -5;
+                ScoreManager.ScoreCount += (- 5);
                 ScoreManager.Multiplier = 1;
             }
         }
