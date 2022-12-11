@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class SwipeDetector : MonoBehaviour
 {
-    private Vector2 _fingerUpPosition;
-    private Vector2 _fingerDownPosition;
     [SerializeField] private bool _detectSwipeOnlyAfterRelease = false;
     [SerializeField] private float _minDistanceForSwipe = 20f;
+    private Vector2 _fingerUpPosition;
+    private Vector2 _fingerDownPosition;
     public static event Action<SwipeData> OnSwipe = delegate { };
 
-    void Update()
+    private void Update()
     {
         foreach (Touch touch in Input.touches)
         {

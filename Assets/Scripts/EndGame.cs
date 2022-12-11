@@ -5,15 +5,21 @@ using UnityEngine.UI;
 
 public class EndGame : MonoBehaviour
 {
-    private static bool _isEnd = false;
     [SerializeField] private ParticleSystem _speedBoostEffect;
     [SerializeField] private Text scoreText;
+    private static bool _isEnd;
+    private int _endScoreBonus = 100;
+
+    private void Start()
+    {
+        _isEnd = false;
+    }
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.tag == "Player")
         {
-            ScoreManager.ScoreCount += 100;
+            ScoreManager.ScoreCount += _endScoreBonus;
             _speedBoostEffect.Stop();
             _isEnd = true;
             scoreText.text = ScoreManager.ScoreCount.ToString();

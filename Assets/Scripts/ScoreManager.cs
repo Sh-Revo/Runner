@@ -6,20 +6,23 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private GameObject _scoreDisplay;
-    private static int _startScoreCount = 0;
+    private static int _startScoreCount;
     private static int _scoreCount;
-    private static int _multiplier = 1;
-    private static int _speedBonus = 1;
+    private static int _multiplier;
+    private static int _speedBonus;
     private bool _addScore = false;
     private float _scoreDelay = 0.5f;
 
     private void Start()
     {
+        _startScoreCount = 0;
+        _multiplier = 1;
+        _speedBonus = 1;
         ScoreCount = _startScoreCount;
         Multiplier = _multiplier;
     }
 
-    void Update()
+    private void Update()
     {
         if (Multiplier < 1)
             Multiplier = 1;

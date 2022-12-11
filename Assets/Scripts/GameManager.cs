@@ -16,9 +16,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndGameScreen()
+    private void EndGameScreen()
     {
         gameOverUI.SetActive(true);
         ScoreDisplayUI.SetActive(false);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

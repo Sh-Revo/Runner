@@ -5,10 +5,15 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     private static int _startSpeed = 10;
-    [SerializeField] private GameObject _cube;
-    [SerializeField] private Rigidbody rigidbody;
+    private new Rigidbody rigidbody;
+    private int _gateScore = 10;
 
-    void FixedUpdate()
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void FixedUpdate()
     {
         if (EndGame.IsEnd == false)
         {
@@ -21,30 +26,32 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void Move()
+    private void Move()
     {    
         rigidbody.AddForce((new Vector3(0, 0, 1)) * _startSpeed * Time.deltaTime, ForceMode.Impulse);
     }
 
-    void Stop()
+    private void Stop()
     {
         if (rigidbody.velocity.magnitude > 1)
         {
-            rigidbody.AddForce((new Vector3(0, 0, -1)) * (rigidbody.velocity.magnitude - 0.1f) * Time.deltaTime, ForceMode.Impulse);
+            rigidbody.AddForce((new Vector3(0, 0, -1)) * (rigidbody.velocity.magnitude - rigidbody.velocity.magnitude / 10f) * Time.deltaTime, ForceMode.Impulse);
         }
-        else 
+        else
+        {
             rigidbody.velocity = Vector3.zero;
+        }          
     }
 
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.tag == "Gate")
         {
-            ScoreManager.ScoreCount += 10;
+            ScoreManager.ScoreCount += _gateScore;
             ScoreManager.Multiplier++;
             if (rigidbody.velocity.magnitude < 2)
             {
-                ScoreManager.ScoreCount += (- 5);
+                ScoreManager.ScoreCount -= _gateScore * 2;
                 ScoreManager.Multiplier = 1;
             }
         }
