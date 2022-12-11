@@ -15,13 +15,25 @@ public class EndGame : MonoBehaviour
         _isEnd = false;
     }
 
+    private void Update()
+    {
+        End();
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.transform.tag == "Player")
         {
             ScoreManager.ScoreCount += _endScoreBonus;
-            _speedBoostEffect.Stop();
             _isEnd = true;
+        }
+    }
+
+    private void End()
+    {
+        if (_isEnd)
+        {
+            _speedBoostEffect.Stop();
             scoreText.text = ScoreManager.ScoreCount.ToString();
         }
     }

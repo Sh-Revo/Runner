@@ -7,9 +7,12 @@ public class CharacterController : MonoBehaviour
     private static int _startSpeed = 10;
     private new Rigidbody rigidbody;
     private int _gateScore = 10;
+    private int _startLives = 2;
+    private int _lives;
 
     private void Start()
     {
+        _lives = _startLives;
         rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -17,6 +20,7 @@ public class CharacterController : MonoBehaviour
     {
         if (EndGame.IsEnd == false)
         {
+            CheckEndGame();
             if (rigidbody.velocity.magnitude < _startSpeed)
                 Move();
         }
@@ -53,8 +57,18 @@ public class CharacterController : MonoBehaviour
             {
                 ScoreManager.ScoreCount -= _gateScore * 2;
                 ScoreManager.Multiplier = 1;
+                _lives--;
             }
         }
+    }
+
+    private void CheckEndGame()
+    {
+        if (_lives == 0)
+        {
+            EndGame.IsEnd = true;
+        }
+            
     }
 
     public static int StartSpeed
